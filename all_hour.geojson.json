@@ -1,0 +1,381 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "generated": 1690223014000,
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
+        "title": "USGS All Earthquakes, Past Hour",
+        "status": 200,
+        "api": "1.10.3",
+        "count": 9
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.57,
+                "place": "7 km NW of Warner Springs, CA",
+                "time": 1690222710610,
+                "updated": 1690222920198,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci39620826",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci39620826.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 38,
+                "net": "ci",
+                "code": "39620826",
+                "ids": ",ci39620826,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 11,
+                "dmin": 0.1471,
+                "rms": 0.22,
+                "gap": 114,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.6 - 7 km NW of Warner Springs, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.6901703,
+                    33.3256683,
+                    29.42
+                ]
+            },
+            "id": "ci39620826"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 0.1,
+                "place": "Alaska Peninsula",
+                "time": 1690222037757,
+                "updated": 1690222144863,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak0239fbxhi7",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak0239fbxhi7.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 0,
+                "net": "ak",
+                "code": "0239fbxhi7",
+                "ids": ",ak0239fbxhi7,",
+                "sources": ",ak,",
+                "types": ",origin,phase-data,",
+                "nst": null,
+                "dmin": null,
+                "rms": 0.54,
+                "gap": null,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 0.1 - Alaska Peninsula"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -155.2975,
+                    58.2003,
+                    1.2
+                ]
+            },
+            "id": "ak0239fbxhi7"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.62,
+                "place": "9km WNW of Isla Vista, CA",
+                "time": 1690221919740,
+                "updated": 1690222145107,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci39620802",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci39620802.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 40,
+                "net": "ci",
+                "code": "39620802",
+                "ids": ",ci39620802,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 13,
+                "dmin": 0.09658,
+                "rms": 0.28,
+                "gap": 94,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.6 - 9km WNW of Isla Vista, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -119.9543333,
+                    34.433,
+                    8.98
+                ]
+            },
+            "id": "ci39620802"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 0.56,
+                "place": "2km NNE of Anza, CA",
+                "time": 1690221556360,
+                "updated": 1690221775396,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci39620794",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci39620794.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 5,
+                "net": "ci",
+                "code": "39620794",
+                "ids": ",ci39620794,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 18,
+                "dmin": 0.02897,
+                "rms": 0.12,
+                "gap": 77,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 0.6 - 2km NNE of Anza, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.6651667,
+                    33.5688333,
+                    9.13
+                ]
+            },
+            "id": "ci39620794"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.69,
+                "place": "2km WSW of Ramona, CA",
+                "time": 1690221502200,
+                "updated": 1690221732532,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci39620786",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci39620786.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 44,
+                "net": "ci",
+                "code": "39620786",
+                "ids": ",ci39620786,",
+                "sources": ",ci,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 7,
+                "dmin": 0.3225,
+                "rms": 0.27,
+                "gap": 155,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.7 - 2km WSW of Ramona, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.8883333,
+                    33.031,
+                    11.64
+                ]
+            },
+            "id": "ci39620786"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.15,
+                "place": "10 km NNW of Avenal, CA",
+                "time": 1690220922270,
+                "updated": 1690222931944,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc73916216",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73916216.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "reviewed",
+                "tsunami": 0,
+                "sig": 20,
+                "net": "nc",
+                "code": "73916216",
+                "ids": ",nc73916216,",
+                "sources": ",nc,",
+                "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                "nst": 21,
+                "dmin": 0.1105,
+                "rms": 0.08,
+                "gap": 243,
+                "magType": "md",
+                "type": "earthquake",
+                "title": "M 1.2 - 10 km NNW of Avenal, CA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -120.1843333,
+                    36.0816667,
+                    6.23
+                ]
+            },
+            "id": "nc73916216"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 2.42,
+                "place": "3 km S of Palmarejo, Puerto Rico",
+                "time": 1690220878520,
+                "updated": 1690221573140,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/pr71419168",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/pr71419168.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "reviewed",
+                "tsunami": 0,
+                "sig": 90,
+                "net": "pr",
+                "code": "71419168",
+                "ids": ",pr71419168,",
+                "sources": ",pr,",
+                "types": ",origin,phase-data,",
+                "nst": 13,
+                "dmin": 0.03579,
+                "rms": 0.13,
+                "gap": 125,
+                "magType": "md",
+                "type": "earthquake",
+                "title": "M 2.4 - 3 km S of Palmarejo, Puerto Rico"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -67.072,
+                    18.0071666666667,
+                    10.31
+                ]
+            },
+            "id": "pr71419168"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 1.5,
+                "place": "45 km SE of Glacier View, Alaska",
+                "time": 1690219957725,
+                "updated": 1690220101413,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak0239fbhgcc",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak0239fbhgcc.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "automatic",
+                "tsunami": 0,
+                "sig": 35,
+                "net": "ak",
+                "code": "0239fbhgcc",
+                "ids": ",ak0239fbhgcc,",
+                "sources": ",ak,",
+                "types": ",origin,phase-data,",
+                "nst": null,
+                "dmin": null,
+                "rms": 0.74,
+                "gap": null,
+                "magType": "ml",
+                "type": "earthquake",
+                "title": "M 1.5 - 45 km SE of Glacier View, Alaska"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -147.0775,
+                    61.5064,
+                    20
+                ]
+            },
+            "id": "ak0239fbhgcc"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 4.4,
+                "place": "Mindanao, Philippines",
+                "time": 1690219595126,
+                "updated": 1690221083040,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ki0m",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us7000ki0m.geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "reviewed",
+                "tsunami": 0,
+                "sig": 298,
+                "net": "us",
+                "code": "7000ki0m",
+                "ids": ",us7000ki0m,",
+                "sources": ",us,",
+                "types": ",origin,phase-data,",
+                "nst": 39,
+                "dmin": 2.386,
+                "rms": 0.75,
+                "gap": 63,
+                "magType": "mb",
+                "type": "earthquake",
+                "title": "M 4.4 - Mindanao, Philippines"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    124.0264,
+                    5.239,
+                    478.53
+                ]
+            },
+            "id": "us7000ki0m"
+        }
+    ],
+    "bbox": [
+        -155.2975,
+        5.239,
+        1.2,
+        124.0264,
+        61.5064,
+        478.53
+    ]
+}
