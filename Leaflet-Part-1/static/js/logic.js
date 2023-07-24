@@ -96,7 +96,7 @@
              maxlat : data.bbox[4],
              maxdep : data.bbox[5] }
     console.log('-----------------------------');
-    console.log('aft loop - < lon :',bbox.minlon);
+    console.log('aft loop - < lon : ',bbox.minlon);
     console.log('aft loop - < lat : ',bbox.minlat);
     console.log('aft loop - < dep : ',bbox.mindep);
     console.log('aft loop - > lon : ',bbox.maxlon);
