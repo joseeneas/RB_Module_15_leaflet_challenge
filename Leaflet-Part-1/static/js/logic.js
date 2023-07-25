@@ -61,7 +61,6 @@ function createFeatures(earthquakeData) {
     if (depth >  20) {fgcolor = colorArray[8]} else
     if (depth >  10) {fgcolor = colorArray[9]} else
                      {fgcolor = colorArray[10]};
-    // console.log(fgcolor);
     circleMarkers.push(L.circle(coord, {  stroke      : true, 
                                           fillOpacity : 0.75, 
                                           color       : "black", 
