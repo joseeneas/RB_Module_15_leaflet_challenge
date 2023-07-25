@@ -31,7 +31,7 @@ The instructions for this activity are broken into two parts:
     - Visit the **<http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php>** and choose a dataset to visualize.
     - Clicking a dataset (as "All Earthquakes from the Past 7 Days"), will cause the selection of a JSON representation of the data.
     - The URL of this JSON represents the source for **Leaflet-Part-1**.
-
+    - We are using **https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson** (Monthly Significant Eathquakes)
 - Import and visualize considering the following:
   - Using Leaflet, create a map that plots all the earthquakes from your dataset based on their longitude and latitude.
     - Your data markers should reflect the magnitude of the earthquake by their size and the depth of the earthquake by color.

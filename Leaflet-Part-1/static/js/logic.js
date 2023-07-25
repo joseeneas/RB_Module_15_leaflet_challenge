@@ -1,108 +1,110 @@
-  // url
-  const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
 
-  d3.json(url).then(function(data) { // begin of function retrieve data
-    
-    ctype = data.type;
-    console.log('-----------------------------');
-    console.log('bef loop - ctype : ',data.type);
-    metadata = {};
-    metadata = { generated : data.metadata.generated,
-                 url       : data.metadata.url,
-                 title     : data.metadata.title,
-                 api       : data.metadata.api,
-                 count     : data.metadata.count,
-                 status    : data.metadata.status};
-    console.log('-----------------------------');
-    console.log('bef loop - gen   : ',metadata.generated);
-    console.log('bef loop - url   : ',metadata.url);
-    console.log('bef loop - title : ',metadata.title);
-    console.log('bef loop - api   : ',metadata.api);
-    console.log('bef loop - count : ',metadata.count);
-    console.log('bef loop - stat  : ',metadata.status);
-    features = [];
-    for (let i=0; i < metadata.count; i++) { 
-      features[i] = {};
-      features[i] = { ftype   : data.features[i].type,
-                      mag     : data.features[i].properties.mag,
-                      place   : data.features[i].properties.place,
-                      time    : data.features[i].properties.time,
-                      updated : data.features[i].properties.updated,
-                      tz      : data.features[i].properties.tz,
-                      url     : data.features[i].properties.url,
-                      detail  : data.features[i].properties.detail,
-                      felt    : data.features[i].properties.felt,
-                      cdi     : data.features[i].properties.cdi,
-                      mmi     : data.features[i].properties.mmi,
-                      alert   : data.features[i].properties.alert,
-                      status  : data.features[i].properties.status,
-                      tsunami : data.features[i].properties.tsunami,
-                      sig     : data.features[i].properties.sig,
-                      net     : data.features[i].properties.net,
-                      code    : data.features[i].properties.code,
-                      ids     : data.features[i].properties.ids,
-                      sources : data.features[i].properties.sources,
-                      types   : data.features[i].properties.types, 
-                      nst     : data.features[i].properties.nst,
-                      dmin    : data.features[i].properties.dmin,
-                      rms     : data.features[i].properties.rms,
-                      gap     : data.features[i].properties.gap,
-                      magType : data.features[i].properties.magType,
-                      ptype   : data.features[i].properties.type,
-                      title   : data.features[i].properties.title,
-                      long    : data.features[i].geometry.coordinates[0],
-                      lat     : data.features[i].geometry.coordinates[1],
-                      depth   : data.features[i].geometry.coordinates[2],
-                      id      : data.features[i].id};
-      console.log('-----------------------------');
-      console.log('in  loop - i     : ',i);
-      console.log('in  loop - type  : ',features[i].ftype);
-      console.log('in  loop - mag   : ',features[i].mag);
-      console.log('in  loop - place : ',features[i].place)
-      console.log('in  loop - time  : ',features[i].time);
-      console.log('in  loop - updt  : ',features[i].updated);
-      console.log('in  loop - tz    : ',features[i].tz);
-      console.log('in  loop - url   : ',features[i].url);
-      console.log('in  loop - detail: ',features[i].detail);
-      console.log('in  loop - felt  : ',features[i].felt);
-      console.log('in  loop - cdi   : ',features[i].cdi);
-      console.log('in  loop - mmi   : ',features[i].mmi);
-      console.log('in  loop - alert : ',features[i].alert);
-      console.log('in  loop - status: ',features[i].status);
-      console.log('in  loop - tsu   : ',features[i].tsunami);
-      console.log('in  loop - sig   : ',features[i].sig);
-      console.log('in  loop - net   : ',features[i].net);
-      console.log('in  loop - code  : ',features[i].code);
-      console.log('in  loop - ids   : ',features[i].ids);
-      console.log('in  loop - src   : ',features[i].sources);
-      console.log('in  loop - types : ',features[i].types);
-      console.log('in  loop - nst   : ',features[i].nst);
-      console.log('in  loop - dmin  : ',features[i].dmin);
-      console.log('in  loop - rms   : ',features[i].rms);
-      console.log('in  loop - gap   : ',features[i].gap);
-      console.log('in  loop - magTyp: ',features[i].magType);
-      console.log('in  loop - type  : ',features[i].ptype);
-      console.log('in  loop - title : ',features[i].title);
-      console.log('in  loop - long  : ',features[i].long);
-      console.log('in  loop - lat   : ',features[i].lat);
-      console.log('in  loop - depth : ',features[i].depth);
-      console.log('in  loop - id    : ',features[i].id);
-    } 
-    bbox = {};
-    bbox = { minlon : data.bbox[0],
-             minlat : data.bbox[1],
-             mindep : data.bbox[2],
-             maxlon : data.bbox[3],
-             maxlat : data.bbox[4],
-             maxdep : data.bbox[5] }
-    console.log('-----------------------------');
-    console.log('aft loop - < lon : ',bbox.minlon);
-    console.log('aft loop - < lat : ',bbox.minlat);
-    console.log('aft loop - < dep : ',bbox.mindep);
-    console.log('aft loop - > lon : ',bbox.maxlon);
-    console.log('aft loop - > lat : ',bbox.maxlat);
-    console.log('aft loop - > dep : ',bbox.maxdep); 
+const url        = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson';
+const colorArray = [ '#DB0000', '##E400B4', '#CD00ED', '#1000F6', '#0070FF', '#22ADFF', '#44E0FF', '#66FFFF', '#88FFEE', '#AAFFE1', '#CCFFE2'];
+let eqMarkers   = [];
 
+function markerSize(mag) { 
+  if (mag < 0) { mag = mag * -1};
+  return mag * 60000; 
+}
 
-  }); // end of function retrieve data
+// Perform a GET request to the query URL/
+d3.json(url).then(function (data) { 
+  createFeatures(data.features); 
+});
+
+function createMap(earthquakes) {
+
+  let street   = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+                              {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+  let topo     = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', 
+                              { attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, \
+                              <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org"> \
+                              OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'});
+  let baseMaps = { "Street Map": street, "Topographic Map": topo };
+
+  // Create an overlay object to hold our overlay.
+  let circles     = L.layerGroup(eqMarkers);
+  // console.log('circles     :',circles);
+  // console.log('earthquakes :', earthquakes);
+  let overlayMaps = { Earthquakes : earthquakes,  
+                      Circles     : circles};
+
+  // Create our map, giving it the streetmap and earthquakes layers to display on load.
+  let myMap       = L.map("map", {  
+                    center: [ 37.09, -95.71 ], 
+                    zoom: 3, 
+                    layers: [street, earthquakes, circles] });
+
+  // Create a layer control.
+  // Pass it our baseMaps and overlayMaps.
+  // Add the layer control to the map.
+  L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(myMap);
+}
+
+function createFeatures(earthquakeData) {
+
+  // console.log('earthquakedata',earthquakeData);
+
+  function onEachFeature(feature, layer) {
+    // console.log('feature ',feature;
+    // console.log('place   ',feature.properties.place);
+    // console.log('mag     ',feature.properties.mag);
+    // console.log('coord   ',feature.geometry.coordinates[1]);
+    // console.log('coord   ',feature.geometry.coordinates[0]);
+
+    coord = [ feature.geometry.coordinates[1], feature.geometry.coordinates[0]]
+    // console.log(coord);
+    // console.log(feature.properties.mag);
+    // console.log('depth :',feature.geometry.coordinates[2]);
+
+    // Earthquake Magnitude Scale
+    // Magnitude	    Earthquake Effects	                                  Estimated Number Each Year
+    // 2.5 or less	  Usually not felt, but can be recorded by seismograph.	Millions
+    // 2.5 to 5.4	    Often felt, but only causes minor damage.	            500,000     
+    // 5.5 to 6.0	    Slight damage to buildings and other structures.	    350
+    // 6.1 to 6.9	    May cause a lot of damage in very populated areas.	  100
+    // 7.0 to 7.9	    Major earthquake. Serious damage.	                    10-15
+    // 8.0 or greater	Great earthquake.                                     Can totally destroy communities near the epicenter.	
+    //                                                                      One every year or two years
+
   
+    
+    // Use depth to calculate the circle fill color
+    depth = feature.geometry.coordinates[2];
+    if (depth > 100) {fgcolor = colorArray[0]} else
+    if (depth >  90) {fgcolor = colorArray[1]} else
+    if (depth >  80) {fgcolor = colorArray[2]} else
+    if (depth >  70) {fgcolor = colorArray[3]} else    
+    if (depth >  60) {fgcolor = colorArray[4]} else
+    if (depth >  50) {fgcolor = colorArray[5]} else
+    if (depth >  40) {fgcolor = colorArray[6]} else
+    if (depth >  30) {fgcolor = colorArray[7]} else
+    if (depth >  20) {fgcolor = colorArray[8]} else
+    if (depth >  10) {fgcolor = colorArray[9]} else
+                     {fgcolor = colorArray[10]};
+    // console.log(fgcolor);
+    eqMarkers.push(L.circle(coord, {  stroke      : true, 
+                                      fillOpacity : 0.75, 
+                                      color       : "black", 
+                                      weight      : 1,
+                                      fillColor   : fgcolor,
+                                      radius      : markerSize(feature.properties.mag)
+    }));
+    layer.bindPopup(`<h3>${feature.properties.place}</h3><hr>
+                     <p>${new Date(feature.properties.time)}</p>
+                     <p>Longitude: ${feature.geometry.coordinates[1]}</p>
+                     <p>Latitude : ${feature.geometry.coordinates[0]}</p>
+                     <p>Depth    : ${feature.geometry.coordinates[2]}</p>
+                     <p>Magnitude: ${feature.properties.mag}</p>`);
+  }
+
+  // Create a GeoJSON layer that contains the features array on the earthquakeData object.
+  // Run the onEachFeature function once for each piece of data in the array.
+
+  let earthquakes = L.geoJSON(earthquakeData, { onEachFeature: onEachFeature });
+
+  // Send our earthquakes layer to the createMap function/
+  createMap(earthquakes);
+}
+
