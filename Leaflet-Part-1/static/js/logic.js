@@ -1,7 +1,9 @@
 
-const url        = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson';
-const colorArray = [ '#DB0000', '##E400B4', '#CD00ED', '#1000F6', '#0070FF', '#22ADFF', '#44E0FF', '#66FFFF', '#88FFEE', '#AAFFE1', '#CCFFE2'];
-let eqMarkers   = [];
+const url         = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson';
+const colorArray  = [ '#DB0000', '##E400B4', '#CD00ED', '#1000F6', '#0070FF', 
+                       '#22ADFF', '#44E0FF', '#66FFFF', '#88FFEE', '#AAFFE1', 
+                       '#CCFFE2' ];
+let circleMarkers = [];
 
 function markerSize(mag) { 
   if (mag < 0) { mag = mag * -1};
@@ -23,12 +25,11 @@ function createMap(earthquakes) {
                               OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'});
   let baseMaps = { "Street Map": street, "Topographic Map": topo };
 
-  // Create an overlay object to hold our overlay.
-  let circles     = L.layerGroup(eqMarkers);
-  // console.log('circles     :',circles);
-  // console.log('earthquakes :', earthquakes);
-  let overlayMaps = { Earthquakes : earthquakes,  
-                      Circles     : circles};
+  // Create an overlay object to hold our overlay
+  let circles     = L.layerGroup(circleMarkers);
+  console.log(circles);
+  let overlayMaps = { 'Earthquakes Markers': earthquakes,  
+                      'Earthquakes Circles': circles};
 
   // Create our map, giving it the streetmap and earthquakes layers to display on load.
   let myMap       = L.map("map", {  
@@ -44,32 +45,9 @@ function createMap(earthquakes) {
 
 function createFeatures(earthquakeData) {
 
-  // console.log('earthquakedata',earthquakeData);
-
   function onEachFeature(feature, layer) {
-    // console.log('feature ',feature;
-    // console.log('place   ',feature.properties.place);
-    // console.log('mag     ',feature.properties.mag);
-    // console.log('coord   ',feature.geometry.coordinates[1]);
-    // console.log('coord   ',feature.geometry.coordinates[0]);
-
+    // retrieve long and lat
     coord = [ feature.geometry.coordinates[1], feature.geometry.coordinates[0]]
-    // console.log(coord);
-    // console.log(feature.properties.mag);
-    // console.log('depth :',feature.geometry.coordinates[2]);
-
-    // Earthquake Magnitude Scale
-    // Magnitude	    Earthquake Effects	                                  Estimated Number Each Year
-    // 2.5 or less	  Usually not felt, but can be recorded by seismograph.	Millions
-    // 2.5 to 5.4	    Often felt, but only causes minor damage.	            500,000     
-    // 5.5 to 6.0	    Slight damage to buildings and other structures.	    350
-    // 6.1 to 6.9	    May cause a lot of damage in very populated areas.	  100
-    // 7.0 to 7.9	    Major earthquake. Serious damage.	                    10-15
-    // 8.0 or greater	Great earthquake.                                     Can totally destroy communities near the epicenter.	
-    //                                                                      One every year or two years
-
-  
-    
     // Use depth to calculate the circle fill color
     depth = feature.geometry.coordinates[2];
     if (depth > 100) {fgcolor = colorArray[0]} else
@@ -84,13 +62,19 @@ function createFeatures(earthquakeData) {
     if (depth >  10) {fgcolor = colorArray[9]} else
                      {fgcolor = colorArray[10]};
     // console.log(fgcolor);
-    eqMarkers.push(L.circle(coord, {  stroke      : true, 
-                                      fillOpacity : 0.75, 
-                                      color       : "black", 
-                                      weight      : 1,
-                                      fillColor   : fgcolor,
-                                      radius      : markerSize(feature.properties.mag)
-    }));
+    circleMarkers.push(L.circle(coord, {  stroke      : true, 
+                                          fillOpacity : 0.75, 
+                                          color       : "black", 
+                                          weight      : 1,
+                                          fillColor   : fgcolor,
+                                          radius      : markerSize(feature.properties.mag),
+                                          bindPopup   : (`<h3>${feature.properties.place}</h3><hr>
+                                                          <p>${new Date(feature.properties.time)}</p>
+                                                          <p>Longitude: ${feature.geometry.coordinates[1]}</p>
+                                                          <p>Latitude : ${feature.geometry.coordinates[0]}</p>
+                                                          <p>Depth    : ${feature.geometry.coordinates[2]}</p>
+                                                          <p>Magnitude: ${feature.properties.mag}</p>`)}));
+
     layer.bindPopup(`<h3>${feature.properties.place}</h3><hr>
                      <p>${new Date(feature.properties.time)}</p>
                      <p>Longitude: ${feature.geometry.coordinates[1]}</p>
@@ -101,10 +85,10 @@ function createFeatures(earthquakeData) {
 
   // Create a GeoJSON layer that contains the features array on the earthquakeData object.
   // Run the onEachFeature function once for each piece of data in the array.
-
   let earthquakes = L.geoJSON(earthquakeData, { onEachFeature: onEachFeature });
 
-  // Send our earthquakes layer to the createMap function/
+  // Send our earthquakes layer to the createMap function
+
   createMap(earthquakes);
 }
 
