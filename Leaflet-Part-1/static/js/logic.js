@@ -1,8 +1,7 @@
 
 const url         = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson';
-const colorArray  = [ '#DB0000', '##E400B4', '#CD00ED', '#1000F6', '#0070FF', 
-                       '#22ADFF', '#44E0FF', '#66FFFF', '#88FFEE', '#AAFFE1', 
-                       '#CCFFE2' ];
+const colorArray  = ['#000102','#110621','#3E0F2B','#583219','#537026',
+                     '#368656','#47799A','#5E8FA8','#76A4B6','#8DB8C3','#A5CAD0'];
 let circleMarkers = [];
 
 function markerSize(mag) { 
@@ -11,12 +10,9 @@ function markerSize(mag) {
 }
 
 // Perform a GET request to the query URL/
-d3.json(url).then(function (data) { 
-  createFeatures(data.features); 
-});
+d3.json(url).then(function (data) { createFeatures(data.features); } );
 
 function createMap(earthquakes) {
-
   let street   = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
                               {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
   let topo     = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', 
@@ -27,20 +23,35 @@ function createMap(earthquakes) {
 
   // Create an overlay object to hold our overlay
   let circles     = L.layerGroup(circleMarkers);
-  console.log(circles);
   let overlayMaps = { 'Earthquakes Markers': earthquakes,  
                       'Earthquakes Circles': circles};
-
+   
   // Create our map, giving it the streetmap and earthquakes layers to display on load.
   let myMap       = L.map("map", {  
                     center: [ 37.09, -95.71 ], 
                     zoom: 3, 
-                    layers: [street, earthquakes, circles] });
+                    layers: [street, earthquakes, circles]});
+  console.log('myMap criado');
+  var legend = L.control({position: 'bottomright'});
+  legend.onAdd = function (myMap) {
+    var div    = L.DomUtil.create('div', 'info legend');
+    labels     = ['<strong>Depths</strong> More than X, less than X+1'];
+    categories = ['100m','90m','80m','70m','60m','50m','40m','30m','20m','10m','0m'];
+    for (var i = 0; i < categories.length; i++) {
+            div.innerHTML += 
+            labels.push(
+                `<em><i style="color:${colorArray[i]}">> ${categories[i]} - color(${colorArray[i]})</i></em> ` );
+        }
+        div.innerHTML = labels.join('<br>');
+    return div;
+  };
+  legend.addTo(myMap);
 
   // Create a layer control.
   // Pass it our baseMaps and overlayMaps.
   // Add the layer control to the map.
   L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(myMap);
+
 }
 
 function createFeatures(earthquakeData) {
@@ -61,20 +72,21 @@ function createFeatures(earthquakeData) {
     if (depth >  20) {fgcolor = colorArray[8]} else
     if (depth >  10) {fgcolor = colorArray[9]} else
                      {fgcolor = colorArray[10]};
-    circleMarkers.push(L.circle(coord, {  stroke      : true, 
-                                          fillOpacity : 0.75, 
-                                          color       : "black", 
-                                          weight      : 1,
-                                          fillColor   : fgcolor,
-                                          radius      : markerSize(feature.properties.mag),
-                                          bindPopup   : (`<h3>${feature.properties.place}</h3><hr>
-                                                          <p>${new Date(feature.properties.time)}</p>
-                                                          <p>Longitude: ${feature.geometry.coordinates[1]}</p>
-                                                          <p>Latitude : ${feature.geometry.coordinates[0]}</p>
-                                                          <p>Depth    : ${feature.geometry.coordinates[2]}</p>
-                                                          <p>Magnitude: ${feature.properties.mag}</p>`)}));
+    circleMarkers.push(L.circle(coord,{stroke      : true, 
+                                       fillOpacity : 0.75, 
+                                       color       : "black", 
+                                       weight      : 1,
+                                       fillColor   : fgcolor,
+                                       radius      : markerSize(feature.properties.mag)})
+                                      .bindPopup(`<h3 style="color: ${fgcolor}">
+                                      ${feature.properties.place} (${fgcolor})</h3><hr>
+                                       <p>${new Date(feature.properties.time)}</p>
+                                       <p>Longitude: ${feature.geometry.coordinates[1]}</p>
+                                       <p>Latitude : ${feature.geometry.coordinates[0]}</p>
+                                       <p>Depth    : ${feature.geometry.coordinates[2]}</p>
+                                       <p>Magnitude: ${feature.properties.mag}</p>`));
 
-    layer.bindPopup(`<h3>${feature.properties.place}</h3><hr>
+    layer.bindPopup(`<h3 style="color: ${fgcolor}">${feature.properties.place} (${fgcolor})</h3><hr>
                      <p>${new Date(feature.properties.time)}</p>
                      <p>Longitude: ${feature.geometry.coordinates[1]}</p>
                      <p>Latitude : ${feature.geometry.coordinates[0]}</p>
