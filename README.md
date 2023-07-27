@@ -7,9 +7,9 @@ The USGS is interested in building a new set of tools that will allow them to vi
 
 ## Repository Preparation steps
 
-- Create the project repository called **leaflet-challenge**.
+- Create the project repository called leaflet-challenge.
 - Clone the new repository to your computer.
-- In the local git repository, create a directory for the Leaflet challenge. Use the folder names to correspond to the challenges: **Leaflet-Part-1** and **Leaflet-Part-2**.
+- In the local git repository, create a directory for the Leaflet challenge. Use the folder names to correspond to the challenges: Leaflet-Part-1 and Leaflet-Part-2.
 - This Challenge uses both HTML and JavaScript, simliar files exist in each part.
 - Push the above changes to GitHub.
 
@@ -17,20 +17,19 @@ The USGS is interested in building a new set of tools that will allow them to vi
 
 - Download the following files to help you get started: Module 15 Challenge files, from the bootcamp dashboard.
 
-
 ## Steps to be completed
 
 The instructions for this activity are broken into two parts:
 
-### Part 1: Create the Earthquake Visualization (**Leaflet-Part-1**)
+### Part 1: Create the Earthquake Visualization (Leaflet-Part-1)
 
 - First task is to visualize an earthquake dataset.These are the steps:
   - Get the dataset.
     - The USGS provides earthquake data in a number of different formats, updated every 5 minutes.
-    - Visit the **<http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php>** and choose a dataset to visualize.
+    - Visit the <http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php> and choose a dataset to visualize.
     - Clicking a dataset (as "All Earthquakes from the Past 7 Days"), will cause the selection of a JSON representation of the data.
     - The URL of this JSON represents the source for **Leaflet-Part-1**.
-    - We are using **https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson** (Monthly Significant Eathquakes)
+    - We are using <https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson> (Monthly Significant Eathquakes)
 - Import and visualize considering the following:
   - Using Leaflet, create a map that plots all the earthquakes from your dataset based on their longitude and latitude.
     - Your data markers should reflect the magnitude of the earthquake by their size and the depth of the earthquake by color.
@@ -39,13 +38,13 @@ The instructions for this activity are broken into two parts:
   - Include popups that provide additional information about the earthquake when its associated marker is clicked.
   - Create a legend that will provide context for your map data.
 
-### Part 2: Gather and Plot More Data (Optional with no extra points earning - (**Leaflet-Part-2**)
+### Part 2: Gather and Plot More Data, Optional with no extra points earning - (Leaflet-Part-2)
 
 ### Is now implemented with Part-1
 
-- Plot a second dataset on your map to illustrate the relationship between tectonic plates and seismic activity. 
-- You will need to pull in this dataset and visualize it alongside your original data. 
-- Data on tectonic plates is:  **https://github.com/fraxen/tectonicplates**.
+- Plot a second dataset on your map to illustrate the relationship between tectonic plates and seismic activity.
+- You will need to pull in this dataset and visualize it alongside your original data.
+- Data on tectonic plates is:  <https://github.com/fraxen/tectonicplates>.
 - Perform the following tasks:
   - Plot the tectonic plates dataset on the map in addition to the earthquakes.
   - Add other base maps to choose from.
