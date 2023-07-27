@@ -51,10 +51,10 @@ d3.json(url2).then (function(data) {
                         'Tectonic Plates    ': plates};
    
     // Final map setup and legend preparation
-    let myMap       = L.map("map", {  
-                      center: [ 43.519115829461924, -38.21946147420354 ], 
-                      zoom: 3, 
-                      layers: [street, earthquakes, circles,plates]});
+    let myMap    = L.map("map", {  
+                         center: [ 43.519115829461924, -38.21946147420354 ], 
+                         zoom: 3, 
+                         layers: [street, earthquakes, circles, plates] } );
     var legend   = L.control({position: 'bottomright'});
     legend.onAdd = function (myMap) {
       var div    = L.DomUtil.create('div', 'info legend');
