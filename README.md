@@ -40,7 +40,7 @@ The instructions for this activity are broken into two parts:
 
 ### Part 2: Gather and Plot More Data, Optional with no extra points earning - (Leaflet-Part-2)
 
-### Is now implemented with Part-1
+#### Is now implemented with Part-1
 
 - Plot a second dataset on your map to illustrate the relationship between tectonic plates and seismic activity.
 - You will need to pull in this dataset and visualize it alongside your original data.
