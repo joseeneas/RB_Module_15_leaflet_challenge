@@ -14,6 +14,7 @@ const colorArray  = ['#641E16',
                      '#F5B7B1',
                      '#FADBD8',
                      '#FDEDEC'];
+                     
 let circleMarkers = [];
 
 // function to calculate Circle Size, proportionally to the magnitude
