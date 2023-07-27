@@ -16,8 +16,7 @@ The USGS is interested in building a new set of tools that will allow them to vi
 ### Files
 
 - Download the following files to help you get started: Module 15 Challenge files, from the bootcamp dashboard.
-- The repository will also contain the following files:
-  - <TBD>
+
 
 ## Steps to be completed
 

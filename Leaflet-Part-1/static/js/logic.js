@@ -22,25 +22,26 @@ function circleSize(mag) {
   return mag * 60000; 
 }
 
-d3.json(url2).then (function(data) {
-  // Creating a GeoJSON layer with the retrieved data
+d3.json(url2).then (function(data) { 
+  
   plates = L.geoJson(data);
-
-  // retrieve the earthquake data
-  d3.json(url).then(function (data) { createFeatures(data.features); } );
+  d3.json(url).then(function (data) { createFeatures(data.features); });
 
   // function to create the map with all the required features
   function createMap(earthquakes) {
   
     // prepare the layers and assign to the map
     let street   = 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
-               {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' })
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+                 {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">\
+                 OpenStreetMap</a> contributors' })
     let topo     = 
-    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', 
-               { attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, \
-               <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org"> \
-                OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'});
+      L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', 
+                 { attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright"> \
+                 OpenStreetMap</a> contributors, \
+                 <a href="http://viewfinderpanoramas.org">SRTM</a> | \
+                 Map style: &copy; <a href="https://opentopomap.org"> \
+                  OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'});
     let baseMaps = { "Street Map": street, "Topographic Map": topo };
   
     // Create an overlays
@@ -69,7 +70,6 @@ d3.json(url2).then (function(data) {
 
     // Create the layer control.
     L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(myMap);
-
   }
 
   // process individual Earthquake data
