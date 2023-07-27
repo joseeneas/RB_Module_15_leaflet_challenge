@@ -40,7 +40,9 @@ The instructions for this activity are broken into two parts:
   - Include popups that provide additional information about the earthquake when its associated marker is clicked.
   - Create a legend that will provide context for your map data.
 
-### Part 2: Gather and Plot More Data (Optional with no extra points earning - **Leaflet-Part-2**)
+### Part 2: Gather and Plot More Data (Optional with no extra points earning - (**Leaflet-Part-2**)
+
+### Is now implemented with Part-1
 
 - Plot a second dataset on your map to illustrate the relationship between tectonic plates and seismic activity. 
 - You will need to pull in this dataset and visualize it alongside your original data. 
