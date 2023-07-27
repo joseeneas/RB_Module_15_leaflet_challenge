@@ -3,8 +3,17 @@
 const url         = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson';
 
 // Array of colors used in different parts of the map
-const colorArray  = ['#000102','#110621','#3E0F2B','#583219','#537026',
-                     '#368656','#47799A','#5E8FA8','#76A4B6','#8DB8C3','#A5CAD0'];
+const colorArray  = ['#641E16',
+                     '#78281F',
+                     '#943126',
+                     '#B03A2E',
+                     '#CB4335',
+                     '#E74C3C',
+                     '#EC7063',
+                     '#F1948A',
+                     '#F5B7B1',
+                     '#FADBD8',
+                     '#FDEDEC'];
 let circleMarkers = [];
 
 // function to calculate Circle Size, proportionally to the magnitude
