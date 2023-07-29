@@ -4,16 +4,8 @@ const url2          = 'https://raw.githubusercontent.com/fraxen/tectonicplates/m
 var   plates        = [];
 let   circleMarkers = [];
 // Array of colors used in different parts of the map
-const colorArray  = ['#641E16',
-                     '#78281F',
-                     '#943126',
-                     '#B03A2E',
-                     '#CB4335',
-                     '#E74C3C',
-                     '#EC7063',
-                     '#F1948A',
-                     '#F5B7B1',
-                     '#FADBD8',
+const colorArray  = ['#641E16','#78281F','#943126','#B03A2E','#CB4335',
+                     '#E74C3C','#EC7063','#F1948A','#F5B7B1','#FADBD8',
                      '#FDEDEC'];
                      
 // function to calculate Circle Size, proportionally to the magnitude
